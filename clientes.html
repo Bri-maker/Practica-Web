@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Clientes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FUENTE -->
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- ICONOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Krub', sans-serif;
+            background: linear-gradient(to right, #0097a7, #00c6ff);
+            margin: 0;
+        }
+
+        .contenedor {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        /* GRID */
+        .clientes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        /* CLIENTE */
+        .cliente {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        /* FOTO */
+        .cliente img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+        }
+
+        /* BURBUJA */
+        .burbuja {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        /* PICO */
+        .burbuja::after {
+            content: "";
+            position: absolute;
+            left: -10px;
+            top: 15px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent white transparent transparent;
+        }
+
+        .burbuja:hover {
+            transform: scale(1.05);
+        }
+
+        /* TEXTO */
+        .burbuja h3 {
+            margin: 0;
+            font-size: 16px;
+            color: #0097a7;
+        }
+
+        .burbuja p {
+            font-size: 14px;
+            color: #555;
+            margin: 5px 0;
+        }
+
+        /* ESTRELLAS */
+        .estrellas i {
+            color: #ccc;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .estrellas i.activa {
+            color: gold;
+        }
+
+        .estrellas i:hover {
+            transform: scale(1.2);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .clientes {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <h2>💬 Opiniones de Clientes</h2>
+
+    <div class="clientes">
+
+        <!-- CLIENTE 1 -->
+        <div class="cliente">
+            <img src="img/cliente1.jpg">
+            <div class="burbuja">
+                <h3>Juan Pérez</h3>
+                <div class="estrellas" data-rating="5">
+                    <i class="fas fa-star" data-value="1"></i>
+                    <i class="fas fa-star" data-value="2"></i>
+                    <i class="fas fa-star" data-value="3"></i>
+                    <i class="fas fa-star" data-value="4"></i>
+                    <i class="fas fa-star" data-value="5"></i>
+                </div>
+                <p>"Excelente trabajo, muy profesional."</p>
+            </div>
+        </div>
+
+        <!-- CLIENTE 2 -->
+        <div class="cliente">
+            <img src="img/cliente2.jpg">
+            <div class="burbuja">
+                <h3>María López</h3>
+                <div class="estrellas" data-rating="4">
+                    <i class="fas fa-star" data-value="1"></i>
+                    <i class="fas fa-star" data-value="2"></i>
+                    <i class="fas fa-star" data-value="3"></i>
+                    <i class="fas fa-star" data-value="4"></i>
+                    <i class="fas fa-star" data-value="5"></i>
+                </div>
+                <p>"Me encantó el diseño, lo recomiendo."</p>
+            </div>
+        </div>
+
+        <!-- CLIENTE 3 -->
+        <div class="cliente">
+            <img src="img/cliente3.jpg">
+            <div class="burbuja">
+                <h3>Carlos Ramos</h3>
+                <div class="estrellas" data-rating="3">
+                    <i class="fas fa-star" data-value="1"></i>
+                    <i class="fas fa-star" data-value="2"></i>
+                    <i class="fas fa-star" data-value="3"></i>
+                    <i class="fas fa-star" data-value="4"></i>
+                    <i class="fas fa-star" data-value="5"></i>
+                </div>
+                <p>"Buen servicio y atención."</p>
+            </div>
+        </div>
+
+        <!-- CLIENTE 4 -->
+        <div class="cliente">
+            <img src="img/cliente4.jpg">
+            <div class="burbuja">
+                <h3>Lucía Torres</h3>
+                <div class="estrellas" data-rating="5">
+                    <i class="fas fa-star" data-value="1"></i>
+                    <i class="fas fa-star" data-value="2"></i>
+                    <i class="fas fa-star" data-value="3"></i>
+                    <i class="fas fa-star" data-value="4"></i>
+                    <i class="fas fa-star" data-value="5"></i>
+                </div>
+                <p>"Trabajo impecable y rápido."</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- JAVASCRIPT ESTRELLAS -->
+<script>
+document.querySelectorAll('.estrellas').forEach(container => {
+
+    const estrellas = container.querySelectorAll('i');
+
+    /* CARGAR VALOR INICIAL */
+    let rating = container.getAttribute('data-rating');
+
+    estrellas.forEach(star => {
+        if (star.getAttribute('data-value') <= rating) {
+            star.classList.add('activa');
+        }
+
+        star.addEventListener('click', () => {
+            let valor = star.getAttribute('data-value');
+
+            estrellas.forEach(s => {
+                s.classList.remove('activa');
+                if (s.getAttribute('data-value') <= valor) {
+                    s.classList.add('activa');
+                }
+            });
+
+            container.setAttribute('data-rating', valor);
+        });
+    });
+
+});
+</script>
+
+</body>
+</html>
+
+
+

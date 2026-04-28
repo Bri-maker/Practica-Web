@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Contacto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FUENTE -->
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- ICONOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Krub', sans-serif;
+            margin: 0;
+            height: 100vh;
+
+            /* FONDO ANIMADO */
+            background: linear-gradient(270deg, #0097a7, #00c6ff, #007c91);
+            background-size: 600% 600%;
+            animation: fondoAnimado 10s ease infinite;
+        }
+
+        @keyframes fondoAnimado {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        .contenedor {
+            max-width: 600px;
+            margin: auto;
+            padding: 40px 20px;
+            animation: aparecer 1s ease;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        /* FORMULARIO GLASS */
+        form {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: aparecer 1.2s ease;
+        }
+
+        .campo {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            color: white;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            margin-top: 5px;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        /* BOTÓN */
+        .boton {
+            width: 100%;
+            background: white;
+            color: #0097a7;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            background: #0097a7;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* LINKS */
+        .links {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .links a {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 20px;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        /* EMAIL */
+        .email {
+            background: #ff4b5c;
+        }
+
+        .email:hover {
+            transform: scale(1.1);
+            background: #e63e4d;
+        }
+
+        /* WHATSAPP */
+        .whatsapp {
+            background: #25D366;
+        }
+
+        .whatsapp:hover {
+            transform: scale(1.1);
+            background: #1ebe5d;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <h2>📩 Contáctame</h2>
+
+    <!-- FORMULARIO -->
+    <form>
+        <div class="campo">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre">
+        </div>
+
+        <div class="campo">
+            <label>Email</label>
+            <input type="email" placeholder="Tu correo">
+        </div>
+
+        <div class="campo">
+            <label>Mensaje</label>
+            <textarea placeholder="Escribe tu mensaje"></textarea>
+        </div>
+
+        <button class="boton">Enviar</button>
+    </form>
+
+    <!-- BOTONES -->
+    <div class="links">
+
+        <!-- CORREO -->
+        <a href="mailto:Bmonagotorres@gmail.com" class="email">
+            <i class="fas fa-envelope"></i> Correo
+        </a>
+
+        <!-- WHATSAPP -->
+        <a href="https://wa.me/51918307874?text=Hola,%20quiero%20información%20sobre%20tus%20servicios"
+           target="_blank"
+           class="whatsapp">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+
