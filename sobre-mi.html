@@ -1,116 +1,304 @@
-<main class="contenedor">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Portafolio Profesional - Brinith</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- FOTO -->
-    <img src="img/perfil.jpg" alt="Foto de perfil" class="foto-perfil">
+<link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- DATOS -->
-    <h2>Sobre Mí</h2>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
 
-    <p class="datos">
-        Hola, soy <strong>Brinith</strong>, diseñadora y desarrolladora web apasionada por crear experiencias digitales modernas, funcionales y atractivas.
-        Me especializo en el desarrollo de páginas web, aplicaciones móviles y tiendas online.
-        <br><br>
-        📍 Cerro de Pasco <br>
-        📧 brinith@email.com <br>
-        📞 918 307 874
-    </p>
+body{
+    font-family:'Krub',sans-serif;
+    background:#0b1220;
+    color:#fff;
+}
 
-    <!-- HABILIDADES -->
-    <h2>Habilidades</h2>
+/* NAV */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(12px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    z-index:1000;
+}
 
-    <div class="bloques">
-        <div class="bloque">
-            <i class="fas fa-code"></i>
-            <h4>HTML & CSS</h4>
-            <p>Diseño de interfaces modernas, responsivas y optimizadas.</p>
-        </div>
+nav h1{
+    color:#00e5ff;
+    font-size:20px;
+}
 
-        <div class="bloque">
-            <i class="fab fa-js"></i>
-            <h4>JavaScript</h4>
-            <p>Interactividad, animaciones y desarrollo dinámico.</p>
-        </div>
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin:0 10px;
+    font-size:14px;
+    transition:0.3s;
+}
 
-        <div class="bloque">
-            <i class="fas fa-database"></i>
-            <h4>Backend</h4>
-            <p>Conexión con bases de datos y lógica del servidor.</p>
-        </div>
-    </div>
+nav a:hover{
+    color:#00e5ff;
+}
 
-    <!-- EXPERIENCIA -->
-    <h2>Experiencia</h2>
+/* HERO */
+.hero{
+    height: 450px; /* tamaño tipo celular */
+    max-width:400px; /* ancho de celular */
+    margin:auto; /* centrar */
+    border-radius:20px; /* estilo tipo tarjeta */
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+}
 
-    <p class="datos">
-        ✔ Desarrollo de páginas web para negocios locales<br>
-        ✔ Creación de tiendas online con sistema de pagos<br>
-        ✔ Diseño de interfaces amigables para usuarios<br>
-        ✔ Optimización de rendimiento web
-    </p>
+.hero img{
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    border:4px solid #00e5ff;
+    box-shadow:0 0 25px #00e5ff;
+}
 
-    <!-- PORTAFOLIO -->
-    <h2>Mi Portafolio</h2>
+.hero h2{
+    font-size:42px;
+    margin-top:20px;
+}
 
-    <div class="bloques">
+.hero p{
+    color:#cfd8dc;
+    margin-top:10px;
+}
 
-        <div class="bloque">
-            <i class="fas fa-code"></i>
-            <h4>Desarrollo Web</h4>
-            <p>Creación de páginas modernas usando HTML, CSS y JavaScript.</p>
-        </div>
+.btn{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    background:#00e5ff;
+    color:#000;
+    font-weight:bold;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+}
 
-        <div class="bloque">    
-            <i class="fas fa-mobile-alt"></i>
-            <h4>Apps</h4>
-            <p>Desarrollo de aplicaciones móviles funcionales y atractivas.</p>
-        </div>
+.btn:hover{
+    transform:scale(1.05);
+}
 
-        <div class="bloque">
-            <i class="fas fa-shopping-cart"></i>
-            <h4>E-Commerce</h4>
-            <p>Tiendas online con carrito de compras y pagos digitales.</p>
-        </div>
+/* SECCIONES */
+section{
+    padding:90px 20px;
+    max-width:1100px;
+    margin:auto;
+}
 
-        <div class="bloque">
-            <i class="fas fa-paint-brush"></i>
-            <h4>Diseño UI</h4>
-            <p>Interfaces modernas centradas en la experiencia del usuario.</p>
-        </div>
+/* TITULOS */
+.titulo{
+    text-align:center;
+    font-size:30px;
+    color:#00e5ff;
+    margin-bottom:40px;
+}
 
-        <div class="bloque">
-            <i class="fas fa-database"></i>
-            <h4>Base de Datos</h4>
-            <p>Gestión y diseño de bases de datos eficientes y seguras.</p>
-        </div>
+/* SOBRE MI */
+.sobre{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
 
-        <div class="bloque">
-            <i class="fas fa-chart-line"></i>
-            <h4>Marketing</h4>
-            <p>Estrategias digitales para mejorar tu presencia online.</p>
-        </div>
+.card{
+    background:rgba(255,255,255,0.06);
+    padding:25px;
+    border-radius:15px;
+    backdrop-filter:blur(10px);
+    transition:0.3s;
+}
 
-    </div>
+.card:hover{
+    transform:translateY(-6px);
+    background:rgba(0,229,255,0.1);
+}
 
-    <!-- BOTÓN CONTACTO -->
-    <br><br>
-    <a href="mailto:brinith@email.com" style="
-        display:inline-block;
-        background:#0097a7;
-        color:white;
-        padding:12px 25px;
-        border-radius:8px;
-        text-decoration:none;
-        font-weight:bold;
-    ">
-        Contáctame
-    </a>
+/* PORTAFOLIO */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
 
-    <!-- REDES -->
-    <br><br>
+.proyecto{
+    background:rgba(255,255,255,0.06);
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    transition:0.4s;
+    border:1px solid transparent;
+}
+
+.proyecto i{
+    font-size:38px;
+    color:#00e5ff;
+    margin-bottom:10px;
+}
+
+.proyecto:hover{
+    transform:translateY(-10px);
+    border:1px solid #00e5ff;
+    box-shadow:0 10px 25px rgba(0,229,255,0.2);
+}
+
+/* CONTACTO */
+.contacto{
+    text-align:center;
+}
+
+.contacto a{
+    color:#00e5ff;
+    text-decoration:none;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .sobre{
+        grid-template-columns:1fr;
+    }
+
+    nav{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .hero h2{
+        font-size:32px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+    <h1>Brinith</h1>
     <div>
-        <i class="fab fa-facebook fa-2x"></i>
-        <i class="fab fa-instagram fa-2x"></i>
-        <i class="fab fa-linkedin fa-2x"></i>
+        <a href="#inicio">Inicio</a>
+        <a href="#sobre">Sobre mí</a>
+        <a href="#portafolio">Portafolio</a>
+        <a href="#contacto">Contacto</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+
+    <img src="img/perfil.jpg" alt="perfil">
+
+    <h2>Brinith</h2>
+
+    <p>Diseñadora Web | Frontend Developer | UI/UX</p>
+
+
+</section>
+
+<!-- SOBRE MI -->
+<section id="sobre">
+
+    <h2 class="titulo">Sobre mí</h2>
+
+    <div class="sobre">
+
+        <div class="card">
+            <h3>👩‍💻 Quién soy</h3>
+            <p>
+                Soy una desarrolladora web enfocada en crear experiencias digitales modernas,
+                limpias y funcionales con HTML, CSS y JavaScript.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🚀 Objetivo</h3>
+            <p>
+                Convertir ideas en interfaces atractivas, rápidas y responsivas para la web moderna.
+            </p>
+        </div>
+
     </div>
 
-</main>
+</section>
+
+<!-- PORTAFOLIO -->
+<section id="portafolio">
+
+    <h2 class="titulo">Mi Portafolio</h2>
+
+    <div class="grid">
+
+        <div class="proyecto">
+            <i class="fas fa-code"></i>
+            <h3>Webs Profesionales</h3>
+            <p>Sitios modernos, rápidos y responsivos.</p>
+        </div>
+
+        <div class="proyecto">
+            <i class="fas fa-mobile-alt"></i>
+            <h3>Apps Móviles</h3>
+            <p>Interfaces para Android e iOS.</p>
+        </div>
+
+        <div class="proyecto">
+            <i class="fas fa-shopping-cart"></i>
+            <h3>E-Commerce</h3>
+            <p>Tiendas online completas y seguras.</p>
+        </div>
+
+        <div class="proyecto">
+            <i class="fas fa-paint-brush"></i>
+            <h3>UI/UX</h3>
+            <p>Experiencias visuales modernas.</p>
+        </div>
+
+        <div class="proyecto">
+            <i class="fas fa-database"></i>
+            <h3>Base de Datos</h3>
+            <p>Gestión eficiente de información.</p>
+        </div>
+
+        <div class="proyecto">
+            <i class="fas fa-bullhorn"></i>
+            <h3>Marketing Digital</h3>
+            <p>Estrategias para crecimiento online.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="contacto">
+
+    <h2 class="titulo">Contacto</h2>
+
+    <p>Email: <a href="#">brinith@email.com</a></p>
+    <p>Tel: 918 307 874</p>
+
+</section>
+
+</body>
+</html>
