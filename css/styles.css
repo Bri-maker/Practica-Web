@@ -250,3 +250,89 @@ h1,h2,h3 {
 .footer {
     text-align: center;
 }
+
+
+
+/* ===============================
+   VALIDACIÓN VISUAL
+=============================== */
+
+.input-text {
+    border: 2px solid #ccc;
+    transition: border 0.3s ease;
+}
+
+/* Campo correcto */
+.input-text.correcto {
+    border-color: #22c55e; /* verde */
+}
+
+/* Campo con error */
+.input-text.error {
+    border-color: #ef4444; /* rojo */
+}
+
+/* ===============================
+   ANIMACIONES SCROLL
+=============================== */
+
+.animar {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease;
+}
+
+.animar.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* BOTÓN FLOTANTE */
+.btn-flotante {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #22c55e;
+    color: white;
+    font-size: 24px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    z-index: 1000;
+
+    animation: flotar 2s infinite ease-in-out;
+    transition: 0.3s;
+}
+
+.btn-flotante:hover {
+    transform: scale(1.1);
+    background: #16a34a;
+}
+
+/* ANIMACIÓN */
+@keyframes flotar {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
+
+
+
+.hero {
+    height: 100vh;
+    background-image: url("../img/hero.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.contenido-hero {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.1s linear;
+}
