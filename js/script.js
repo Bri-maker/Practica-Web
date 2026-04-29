@@ -2,17 +2,56 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Sitio web cargado correctamente");
 
     // ===============================
-    // BOTÓN IR ARRIBA
+    // BOTONES SCROLL
     // ===============================
     const btnTop = document.getElementById("btnTop");
+    const btnAbajo = document.getElementById("btnAbajo");
+    const btnInicio = document.getElementById("btnInicio");
 
+    window.addEventListener("scroll", () => {
+
+        const scroll = window.scrollY;
+
+        if (btnTop) {
+            btnTop.classList.toggle("show", scroll > 200);
+        }
+
+        if (btnAbajo) {
+            btnAbajo.classList.toggle("show", scroll < 200);
+        }
+
+        if (btnInicio) {
+            btnInicio.classList.toggle("show", scroll > 300);
+        }
+    });
+
+    // CLICK BOTÓN ARRIBA
     if (btnTop) {
-        window.addEventListener("scroll", () => {
-            btnTop.style.display = window.scrollY > 200 ? "block" : "none";
-        });
-
         btnTop.addEventListener("click", () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
+
+    // CLICK BOTÓN ABAJO
+    if (btnAbajo) {
+        btnAbajo.addEventListener("click", () => {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: "smooth"
+            });
+        });
+    }
+
+    // CLICK BOTÓN INICIO (HERO)
+    if (btnInicio) {
+        btnInicio.addEventListener("click", () => {
+            const hero = document.querySelector(".hero");
+
+            if (hero) {
+                hero.scrollIntoView({ behavior: "smooth" });
+            } else {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
         });
     }
 
@@ -38,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
         input.addEventListener("input", () => {
             validarCampo(input);
 
-            // 🔥 FORMATEO TELÉFONO AUTOMÁTICO
             if (input.type === "tel") {
                 formatearTelefono(input);
             }
@@ -67,8 +105,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // ANIMACIONES
+    // ===============================
+    // INICIAR FUNCIONES
+    // ===============================
     animarScroll();
+    efectoParallax();
+    botonFlotante();
 });
 
 
@@ -81,13 +123,11 @@ function validarCampo(input) {
     const tipo = input.type;
     const mensaje = input.nextElementSibling;
 
-    // VACÍO
     if (valor === "") {
         marcarError(input, mensaje, "Campo obligatorio");
         return false;
     }
 
-    // EMAIL
     if (tipo === "email") {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!regex.test(valor)) {
@@ -96,7 +136,6 @@ function validarCampo(input) {
         }
     }
 
-    // TELÉFONO (9 dígitos Perú)
     if (tipo === "tel") {
         const limpio = valor.replace(/\s/g, "");
 
@@ -111,7 +150,6 @@ function validarCampo(input) {
         }
     }
 
-    // MENSAJE
     if (input.tagName === "TEXTAREA" && valor.length < 10) {
         marcarError(input, mensaje, "Mínimo 10 caracteres");
         return false;
@@ -123,7 +161,7 @@ function validarCampo(input) {
 
 
 // ===============================
-// 🔥 NUEVA FUNCIÓN: FORMATEAR TELÉFONO
+// FORMATEAR TELÉFONO
 // ===============================
 function formatearTelefono(input) {
 
@@ -133,7 +171,6 @@ function formatearTelefono(input) {
         valor = valor.slice(0, 9);
     }
 
-    // Formato: 987 654 321
     if (valor.length > 6) {
         valor = valor.replace(/(\d{3})(\d{3})(\d{0,3})/, "$1 $2 $3");
     } else if (valor.length > 3) {
@@ -159,7 +196,7 @@ function marcarCorrecto(input, mensaje) {
 
 
 // ===============================
-// ANIMACIÓN SCROLL MEJORADA
+// ANIMACIÓN SCROLL
 // ===============================
 function animarScroll() {
 
@@ -178,7 +215,7 @@ function animarScroll() {
 
 
 // ===============================
-// ALERTA MODERNA
+// ALERTA
 // ===============================
 function mostrarAlerta(texto, exito) {
 
@@ -205,8 +242,9 @@ function mostrarAlerta(texto, exito) {
     }, 3000);
 }
 
+
 // ===============================
-// BOTÓN FLOTANTE ACCIÓN
+// BOTÓN FLOTANTE (WHATSAPP)
 // ===============================
 function botonFlotante() {
 
@@ -219,12 +257,13 @@ function botonFlotante() {
 
         mostrarToast("¡Escríbeme! 👋");
 
-        // puedes redirigir o abrir WhatsApp
         window.open("https://wa.me/51918307874", "_blank");
     });
 }
+
+
 // ===============================
-// TOAST PROFESIONAL
+// TOAST
 // ===============================
 function mostrarToast(texto) {
 
@@ -235,9 +274,7 @@ function mostrarToast(texto) {
 
     document.body.appendChild(toast);
 
-    setTimeout(() => {
-        toast.classList.add("visible");
-    }, 50);
+    setTimeout(() => toast.classList.add("visible"), 50);
 
     setTimeout(() => {
         toast.classList.remove("visible");
@@ -245,8 +282,9 @@ function mostrarToast(texto) {
     }, 2500);
 }
 
+
 // ===============================
-// PARALLAX CORREGIDO
+// PARALLAX
 // ===============================
 function efectoParallax() {
 
@@ -264,10 +302,7 @@ function efectoParallax() {
         if (!ticking) {
             window.requestAnimationFrame(() => {
 
-                // 🔹 SOLO mueve el fondo (NO el contenedor)
                 hero.style.backgroundPosition = `center ${scroll * 0.4}px`;
-
-                // 🔹 mueve el texto suavemente hacia arriba
                 contenido.style.transform = `translateY(-${scroll * 0.2}px)`;
 
                 ticking = false;
@@ -277,6 +312,3 @@ function efectoParallax() {
         }
     });
 }
-document.addEventListener("DOMContentLoaded", () => {
-    efectoParallax();
-});
